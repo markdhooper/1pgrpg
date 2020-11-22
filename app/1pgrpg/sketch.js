@@ -1,6 +1,7 @@
 let cardFrame;
 let pDiceImg;
 let mDiceImg;
+let hDiceImg;
 let card;
 let ACTION_COUNT = 24;
 let ACTION_IDX = 0;
@@ -69,7 +70,7 @@ actionMCosts = [
 
 actionHCosts = [
   0,0,0,0,0,0,0,0,0,0,
-  0,0,0,0,0,0,0,0,0,0,
+  0,0,0,0,0,0,0,0,1,0,
   0,0,0,0
 ];
 
@@ -112,13 +113,14 @@ let actionInstructions = [
 let cards = [];
 
 class actionCard{
-  constructor(name,actionImg,actionType,costP,costM,instructionTxt){
+  constructor(name,actionImg,actionType,costP,costM,costH,instructionTxt){
     this.name = name; 
     this.actionImg = actionImg;
     this.actionType = actionType;
     this.instructionTxt = instructionTxt;   
     this.costP = costP;
     this.costM = costM;
+    this.costH = costH;
     this.actionTypeTxt = "TYPE: \n\nCOST:";
   }
   show(){
@@ -130,7 +132,6 @@ class actionCard{
     rect(9,9,263,17);
     rect(117,35,155,100);
     rect(9,143,263,240);
-
     
     image(this.actionImg,9,35,100,100);
     let pos = 0;
@@ -142,9 +143,13 @@ class actionCard{
       image(mDiceImg,146+(60*pos),75,60,60);
       pos++;
     }
+    for(let i = 0; i<this.costH;i++){
+      image(hDiceImg,146+(60*pos),75,60,60);
+      pos++;
+    }
+    
     
     fill(0,0,0);
-    //noStroke();
     textFont('monospace');
     textSize(12);
     textAlign(CENTER,CENTER);
@@ -170,6 +175,7 @@ function preload(){
   }
   pDiceImg = loadImage("https://raw.githubusercontent.com/markdhooper/1pgrpg/master/assets/actionCardIcons/physicalDie.png");
   mDiceImg = loadImage("https://raw.githubusercontent.com/markdhooper/1pgrpg/master/assets/actionCardIcons/mentalDie.png");
+    hDiceImg = loadImage("https://raw.githubusercontent.com/markdhooper/1pgrpg/master/assets/actionCardIcons/hybridDie.png");
 }
 
 function setup() {
@@ -181,6 +187,7 @@ function setup() {
     actionTypes[i],
     actionPCosts[i],
     actionMCosts[i],
+    actionHCosts[i],
     actionInstructions[i]
   ));
   }
