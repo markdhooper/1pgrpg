@@ -3,9 +3,9 @@ A simple card-based approach to rpg combat.
 
 ## Development Stage
 ### Action Cards
-I have the action card generator here:
+I have the action card generator [here](https://editor.p5js.org/BarryFiskerman/present/KWphJHdDp)
 press w to switch to the next card, and s to go back. 
-<iframe src="https://editor.p5js.org/BarryFiskerman/embed/KWphJHdDp"></iframe>
+
 
 ### Character Sheets
 Currently working on generating the sheets programatically using a GUI application. 
